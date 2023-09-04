@@ -248,8 +248,13 @@ class provider implements
             $records->close();
         }
     }
+
+    /**
+     * Get the list of users within a specific context.
+     * @param userlist $userlist The userlist containing the list of users who have data in this context/plugin combination.
+     * @return void
+     */
     public static function get_users_in_context(userlist $userlist) {
-        // TODO: Implement get_users_in_context() method.
         $context = $userlist->get_context();
         if(!$context instanceof \context_user) {
             return;
@@ -274,7 +279,16 @@ class provider implements
 
     }
 
+    /**
+     * Delete multiple users within a single context.
+     * @param approved_userlist $userlist The approved context and user information to delete information for.
+     * @return void
+     */
     public static function delete_data_for_users(approved_userlist $userlist) {
-        // TODO: Implement delete_data_for_users() method.
+        $context = $userlist->get_context();
+
+        if ($context instanceof \context_user) {
+            static::_delete_data_for_user($context->instanceid);
+        }
     }
 }
