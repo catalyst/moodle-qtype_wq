@@ -17,7 +17,7 @@
 $string['wq'] = 'Wiris Quizzes';
 $string['pluginname'] = 'Wiris Quizzes';
 $string['access_provider_enabled'] = 'Access control';
-$string['access_provider_enabled_help'] = 'If enabled ony authenticated users can access Wiris services.';
+$string['access_provider_enabled_help'] = 'If enabled, only authenticated users can access Wiris services.';
 $string['pluginnamesummary'] = '';
 $string['wq_help'] = 'Generic Wiris Quizzes Help';
 $string['editingwq'] = 'Editing a generic Wiris Quizzes question';
@@ -74,7 +74,7 @@ $string['proxyurl'] = 'PROXY_URL:';
 $string['cachedir'] = 'CACHE_DIR:';
 $string['serviceurl'] = 'SERVICE_URL:';
 $string['wqsummary'] = 'This adds a generic Wiris Quizzes question. Only for test purpose. It will be hide from here.';
-$string['wirisquestionincorrect'] = 'Sorry! The system can not generate one of the questions of the quiz. <br />Maybe there is a temporary connection problem right now. <br />Maybe the question algorithm has a bug, and fails sometimes. <br />Maybe it will fail always. <br />Don\'t panic... <br />You can retry the quiz, without penalty, just clicking Continue. <br />You can also tell the Teachers that there is an issue with the question titled: \'{$a->questionname}\'';
+$string['wirisquestionincorrect'] = 'Sorry! The system can not generate one of the questions of the quiz. Maybe there is a temporary connection problem right now, or there is a problem with how the question is set up. You can retry the quiz, without penalty, just clicking Continue. If this error persists, you can tell your teachers that there is an issue with the question {$a->questionname}.';
 $string['wirisquizzeserror'] = 'Sorry! There was an error in Wiris Quizzes.';
 $string['failedtoloadwirisquizzesfromxml'] = 'Failed to load Wiris Quizzes XML definition for question id';
 $string['connectionsettings'] = 'Connection settings';
@@ -97,7 +97,7 @@ $string['debug_mode_enabled_help'] = 'Enables debug mode, which prints additiona
 
 $string['compatibility_settings'] = 'Compatibility settings';
 $string['compatibility_settings_text'] = '';
-$string['filtercodes_compatibility_enabled'] = 'Compatibility with Filter Codes filter';
+$string['filtercodes_compatibility_enabled'] = 'FilterCodes compatibility';
 $string['filtercodes_compatibility_enabled_help'] = 'The Filter Codes filter is not compatible with certain WirisQuizzes features if the option "Escape tags" is selected. Enabling this option solves the compatibility problem. Do not enable it in any other situation.';
 
 $string['privacy:metadata:qtype_wq'] = 'Information about user\'s correct answer for a given WirisQuizzes question type';
@@ -105,3 +105,21 @@ $string['privacy:metadata:qtype_wq:question'] = 'Wiris Quizzes question type id'
 $string['privacy:metadata:qtype_wq:xml'] = 'Wiris Quizzes Question XML';
 
 $string['auxiliar_text'] = 'Write an optional reasoning for your answer:';
+
+$string['log_server_errors'] = 'Log server errors';
+$string['log_server_errors_help'] = 'Extensively log errors coming from the WirisQuizzes service and other errors occurred when processing WirisQuizzes questions to your server logs. This might cause an increase in the size of your log files but might help the Wiris team troubleshoot issues.';
+
+$string['corruptquestion_edit'] = 'WARNING: This question was corrupted and its mathematical data was lost from the database. We have tried to restore everything we could, but you need to rebuild the CalcMe algorithm if your question had one, and any custom input options and validation options. Contact with your administrator for further information.';
+$string['corruptquestion_attempt'] = 'The question {$a->questionname} was corrupted and could not be loaded. Please contact with your teacher so they can fix it.';
+
+$string['quizzescalcurl'] = 'CalcMe URL';
+$string['quizzescalcurl_help'] = 'URL where to load the CalcMe web app.';
+
+$string['quizzesgraphurl'] = 'Graph tool URL';
+$string['quizzesgraphurl_help'] = 'URL where to load the tool used for graph rendering and graphical answer questions.';
+
+$string['maxconnections_disabled'] = 'Disable max connections protection';
+$string['maxconnections_disabled_help'] = 'Disables the protection mechanism that limits the number of concurrent connections to the WirisQuizzes server. Only enable this setting if your usage of WirisQuizzes reaches the concurrency limit and be mindful that your infrastructure will need to handle the increased number of concurrent connections to our server.';
+
+$string['mathjax_compatibity'] = 'MathJax compatibility';
+$string['mathjax_compatibity_help'] = '(Experimental) Enables compatibility with MathJax. This option is only needed if you want to use MathJax instead of MathType to render LaTeX formulas in WirisQuizzes questions. Formulas created with MathType or WirisQuizzes will still be rendered by MathType. For the best performance, we recommend using MathType to render all formulas.';

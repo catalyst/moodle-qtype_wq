@@ -8,6 +8,37 @@ class com_wiris_quizzes_impl_QuestionRequestImpl extends com_wiris_util_xml_Seri
 	public function isEmpty() {
 		return $this->processes === null || $this->processes->length === 0;
 	}
+	public function prefixVariables($prefix, $variablesToPrefix) {
+		$_g = 0; $_g1 = $this->processes;
+		while($_g < $_g1->length) {
+			$p = $_g1[$_g];
+			++$_g;
+			if(Std::is($p, _hx_qtype("com.wiris.quizzes.impl.ProcessGetVariables"))) {
+				$pp = $p;
+				$variables = _hx_explode(",", $pp->names);
+				$sb = new StringBuf();
+				{
+					$_g3 = 0; $_g2 = $variables->length;
+					while($_g3 < $_g2) {
+						$i = $_g3++;
+						$v = $variables[$i];
+						if($i > 0) {
+							$sb->add(",");
+						}
+						if(com_wiris_util_type_Arrays::containsArray($variablesToPrefix, $v)) {
+							$sb->add($prefix);
+						}
+						$sb->add($v);
+						unset($v,$i);
+					}
+					unset($_g3,$_g2);
+				}
+				$pp->names = $sb->b;
+				unset($variables,$sb,$pp);
+			}
+			unset($p);
+		}
+	}
 	public function addMetaProperty($name, $value) {
 		if($this->meta === null) {
 			$this->meta = new _hx_array(array());
@@ -21,7 +52,11 @@ class com_wiris_quizzes_impl_QuestionRequestImpl extends com_wiris_util_xml_Seri
 		if($this->processes === null) {
 			$this->processes = new _hx_array(array());
 		}
-		$this->processes->push($p);
+		if(Std::is($p, _hx_qtype("com.wiris.quizzes.impl.ProcessGetVariables"))) {
+			$this->processes->insert(0, $p);
+		} else {
+			$this->processes->push($p);
+		}
 	}
 	public function variables($names, $type) {
 		$p = new com_wiris_quizzes_impl_ProcessGetVariables();
@@ -64,12 +99,12 @@ class com_wiris_quizzes_impl_QuestionRequestImpl extends com_wiris_util_xml_Seri
 	public function __call($m, $a) {
 		if(isset($this->$m) && is_callable($this->$m))
 			return call_user_func_array($this->$m, $a);
-		else if(isset($this->»dynamics[$m]) && is_callable($this->»dynamics[$m]))
-			return call_user_func_array($this->»dynamics[$m], $a);
+		else if(isset($this->Â»dynamics[$m]) && is_callable($this->Â»dynamics[$m]))
+			return call_user_func_array($this->Â»dynamics[$m], $a);
 		else if('toString' == $m)
 			return $this->__toString();
 		else
-			throw new HException('Unable to call «'.$m.'»');
+			throw new HException('Unable to call Â«'.$m.'Â»');
 	}
 	static $tagName = "processQuestion";
 	function __toString() { return 'com.wiris.quizzes.impl.QuestionRequestImpl'; }

@@ -14,8 +14,8 @@ class com_wiris_quizzes_service_ServiceRouter {
 			$res->setHeader("Content-Length", "" . _hx_string_rec($data->length, ""));
 			$res->writeBinary($data);
 			$res->close();
-		}catch(Exception $»e) {
-			$_ex_ = ($»e instanceof HException) ? $»e->e : $»e;
+		}catch(Exception $Â»e) {
+			$_ex_ = ($Â»e instanceof HException) ? $Â»e->e : $Â»e;
 			$t = $_ex_;
 			{
 				$res->sendError(500, "Unable to read file.");
@@ -120,7 +120,7 @@ class com_wiris_quizzes_service_ServiceRouter {
 						if($rawpostdata) {
 							$postdata = $request->getParameter("postdata");
 							$http->setPostData($postdata);
-							$mime = "text/plain";
+							$mime = (($request->getParameter("contenttype") !== null) ? $request->getParameter("contenttype") : "text/plain");
 						} else {
 							$mime = "application/x-www-form-urlencoded";
 							$keys = $request->getParameterNames();
@@ -193,6 +193,7 @@ class com_wiris_quizzes_service_ServiceRouter {
 		$mimes->set("grammar", "text/plain");
 		$mimes->set("wirislauncher", "application/json");
 		$mimes->set("mathml2accessible", "text/plain");
+		$mimes->set("api", "application/json");
 		return $mimes;
 	}
 	public function getRouter() {
@@ -205,6 +206,7 @@ class com_wiris_quizzes_service_ServiceRouter {
 		$router->set("mathml2accessible", $cfg->get(com_wiris_quizzes_api_ConfigurationKeys::$EDITOR_URL) . "/mathml2accessible");
 		$router->set("plot.png", $cfg->get(com_wiris_quizzes_api_ConfigurationKeys::$GRAPH_URL) . "/plot.png");
 		$router->set("plot.png.base64", $cfg->get(com_wiris_quizzes_api_ConfigurationKeys::$GRAPH_URL) . "/plot.png");
+		$router->set("api", $cfg->get(com_wiris_quizzes_api_ConfigurationKeys::$API_URL));
 		return $router;
 	}
 	static $router = null;

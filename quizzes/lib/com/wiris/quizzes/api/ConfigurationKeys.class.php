@@ -8,6 +8,7 @@ class com_wiris_quizzes_api_ConfigurationKeys {
 	static $SERVICE_OFFLINE = "quizzes.service.offline";
 	static $HAND_URL = "quizzes.hand.url";
 	static $SERVICE_URL = "quizzes.service.url";
+	static $API_URL = "quizzes.api.url";
 	static $PROXY_URL = "quizzes.proxy.url";
 	static $CACHE_DIR = "quizzes.cache.dir";
 	static $MAXCONNECTIONS = "quizzes.maxconnections";
@@ -32,5 +33,6 @@ class com_wiris_quizzes_api_ConfigurationKeys {
 	static $TELEMETRY_TOKEN = "quizzes.telemetry.token";
 	static $QUIZZES_LOGGING_LEVEL = "quizzes.logging.level";
 	static $QUIZZES_TRACKING_ENABLED = "quizzes.tracking.enabled";
+	static $GRAPH_TRACK_INSTANCES = "quizzes.graph.trackinstances";
 	function __toString() { return 'com.wiris.quizzes.api.ConfigurationKeys'; }
 }

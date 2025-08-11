@@ -24,7 +24,7 @@ class qtype_wq extends question_type {
 
     protected $base;
 
-    public function __construct(question_type $base = null) {
+    public function __construct(?question_type $base = null) {
         $this->base = $base;
     }
 
@@ -84,7 +84,7 @@ class qtype_wq extends question_type {
                 $question->options->wirisquestion = $record->xml;
                 $question->options->wirisoptions = $record->options;
             } else {
-                $OUTPUT->notification( get_string('failedtoloadwirisquizzesfromxml', 'qtype_wq') . ' ' . $question->id . '.');
+                $OUTPUT->notification(get_string('failedtoloadwirisquizzesfromxml', 'qtype_wq') . ' ' . $question->id . '.');
                 return false;
             }
         }
@@ -99,8 +99,11 @@ class qtype_wq extends question_type {
     }
 
     protected function initialise_question_instance(question_definition $question, $questiondata) {
+        global $CFG;
+
         $this->base->initialise_question_instance($question->base, $questiondata);
 
+        /** @var qtype_wq_question $question */
         $question->id = &$question->base->id;
         $question->idnumber = &$question->base->idnumber;
         $question->category = &$question->base->category;
@@ -118,7 +121,11 @@ class qtype_wq extends question_type {
         $question->penalty = &$question->base->penalty;
         $question->stamp = &$question->base->stamp;
         $question->version = &$question->base->version;
-        $question->hidden = &$question->base->hidden;
+        if ($CFG->version >= 2022041900 /* v4.0.0 */) {
+            $question->status = &$question->base->status;
+        } else {
+            $question->hidden = &$question->base->hidden;
+        }
         $question->timecreated = &$question->base->timecreated;
         $question->timemodified = &$question->base->timemodified;
         $question->createdby = &$question->base->createdby;
@@ -129,10 +136,14 @@ class qtype_wq extends question_type {
         // Load question xml into Wiris Quizzes API question object.
         if (empty($question->parent)) {
             $builder = com_wiris_quizzes_api_Quizzes::getInstance();
-            $question->wirisquestion = $builder->readQuestion($questiondata->options->wirisquestion);
+            if (isset($questiondata->options->wirisquestion)) {
+                $question->wirisquestion = $builder->readQuestion($questiondata->options->wirisquestion);
+            } else {
+                $question->wirisquestion = $builder->newQuestion();
+                $question->corrupt = true;
+            }
         }
     }
-
     // This method has to be overriden in each real question.
     public function menu_name() {
         // Include JavaScript Hack to modify question chooser.
@@ -159,7 +170,7 @@ class qtype_wq extends question_type {
         $PAGE->requires->js('/question/type/wq/quizzes/service.php?name=quizzes.js&service=resource');
     }
 
-    public function export_to_xml($question, qformat_xml $format, $extra=null) {
+    public function export_to_xml($question, qformat_xml $format, $extra = null) {
         global $DB;
         $xml = $DB->get_record('qtype_wq', array('question' => $question->id), 'xml')->xml;
 
@@ -257,7 +268,7 @@ class qtype_wq extends question_type {
 
     protected function decode_html_entities($xml) {
         $htmlentitiestable = get_html_translation_table(HTML_ENTITIES, ENT_QUOTES, 'UTF-8');
-        $xmlentitiestable = get_html_translation_table(HTML_SPECIALCHARS , ENT_COMPAT, 'UTF-8');
+        $xmlentitiestable = get_html_translation_table(HTML_SPECIALCHARS, ENT_COMPAT, 'UTF-8');
         $entitiestable = array_diff($htmlentitiestable, $xmlentitiestable);
         $decodetable = array_flip($entitiestable);
         $xml = str_replace(array_keys($decodetable), array_values($decodetable), $xml);

@@ -558,6 +558,20 @@
 		"quizzes_studio_input_options_answer_input_method_lock_initial_content_label": "锁定初始内容",
 		"quizzes_studio_input_options_answer_input_method_lock_initial_content_helper_text": "不允许学生在初始内容中留下的空占位符之外修改答案。如果启用此设置，学生将只能填写初始内容的方框。",
 
+		"quizzes_studio_input_options_answer_input_method_display_settings_label": "显示设置",
+		"quizzes_studio_input_options_answer_input_method_display_settings_label_name": "标签名称的可见性",
+		"quizzes_studio_input_options_answer_input_method_display_settings_label_value": "标签值的可见性",
+		"quizzes_studio_input_options_answer_input_method_display_settings_helper_text": "选择标签名称和值的显示设置。您可以选择标签值对学生的显示方式：始终显示、从不显示或关注时显示。",
+		"always": "始终",
+		"focus": "关注",
+		"never": "从不",
+
+		"quizzes_studio_input_options_answer_input_method_magnetic_grid_label": "磁栅设置",
+		"quizzes_studio_input_options_answer_input_method_magnetic_grid_label_text": "为学生答案字段选择磁栅选项。",
+		"force": "力",
+		"snap": "快照",
+		"disabled": "已禁用",
+
 		"quizzes_studio_home_random_variables_title": "随机变量",
 		"quizzes_studio_home_random_variables_title_basic_mode": "基本模式",
 		"quizzes_studio_home_advanced_random_variables_button_text": "高级模式",
@@ -586,7 +600,7 @@
 		
 		"evaluate_keyword": "评估",
 		
-		"home_getting_started_welcome_header_text": "WirisQuizzes 4.8.0介绍：现在配备了手写图表回答",
+		"home_getting_started_welcome_header_text": "WirisQuizzes 4.12.0",
         "home_getting_started_welcome_description_text": "我们很高兴地向您介绍一种新的答复类型，使您的学生可以通过手写图表回答问题。要想了解该功能的更多信息，请查看发布说明和文档。希望您和您的学生能享用WirisQuizzes的这个新功能！",
         "home_getting_started_release_notes_button_text": "版本发布通知",
         "home_getting_give_us_feedback_button_text": "向我们提供您的反馈",
@@ -611,7 +625,69 @@
 		"quizzes_studio_home_correct_answer_description_sketch_paragraph_2": "请使用“测试该问题”按钮查看学生界面。",
 		"quizzes_studio_test_question_student_answer_feedback_assertion_equivalent_sketch_label" : "等效草图",
 		"quizzes_demo_sketch_title_menu" : "草图",
-		"home_getting_started_documentation_button_text" : "文档"
+		"home_getting_started_documentation_button_text" : "文档", 
+
+		"close_mathtype_popup" : "关闭MathType",
+
+		"quizzes_studio_validation_options_student_answer_comparison_keep_arguments_evaluated_label": "Evaluated",
+		"quizzes_studio_validation_options_student_answer_comparison_keep_arguments_unevaluated_label": "保持自变量不被评估",
+		"quizzes_studio_validation_options_student_answer_comparison_keep_arguments_string_label": "String",
+		"quizzes_studio_validation_options_student_answer_comparison_arguments_helper_text": "Define how the student answer will be passed as an argument to the grading function. This is a very advanced feature.",
+
+		"quizzes_studio_import_deprecated_message_title" : "Deprecated features",
+		"quizzes_studio_import_deprecated_message_text" : "The question you are about to open contains deprecated features. The import process may change slightly the behavior of the question. It is highly recommended that you carefully test de question after import. \n    The deprecated features are the following ones:",
+
+		"quizzes_studio_equivalent_set_assertion": "Equivalent set assertion is no longer available",
+		"quizzes_studio_syntax_list_assertion": "Syntax list assertion is no longer available",
+		"quizzes_studio_text_logic_operators" : "Text logic operators are no longer available",
+		"quizzes_studio_equivalent_unit_literal" : "Equivalent unit literal assertion is no longer available",
+
+		"quizzes_studio_math_multistep_switch_label" : "学生自动指导",
+		"quizzes_studio_math_multistep_helper_panel_title" : "您已打开此问题的自动反馈功能",
+		"quizzes_studio_math_multistep_helper_panel_description" : "请定义您将创建的任务类型并指定必填字段。 我们的引擎将自动生成反馈。 您可以测试学生如何查看反馈。 ",
+		"quizzes_studio_math_multistep_helper_panel_hyperlink" : "更多信息",
+		"quizzes_studio_math_multistep_helper_panel_close_button" : "关闭面板",
+		"quizzes_studio_math_multistep_define_task_title" : "定义任务",
+		"quizzes_studio_math_multistep_documentation_tooltip" : "链接至文档",
+		"quizzes_studio_math_multistep_type_of_task_label" : "任务类型",
+		"quizzes_studio_math_multistep_type_of_task_single_variable_equation": "单变量方程式 ",
+		"quizzes_studio_math_multistep_type_of_task_basic_operations": "基本运算 ",
+		"quizzes_studio_math_multistep_type_of_task_dropdown_description": "从下拉菜单中选择字段。 ",
+		"quizzes_studio_math_multistep_task_to_solve_label" : "要解决的任务 ",
+		"quizzes_studio_math_multistep_task_to_solve_math_type_description": "请勿在此处填写正确答案，只填写要求解的方程式。 ",
+		"quizzes_studio_math_multistep_random_variables_label" : "随机变量 ",
+		"quizzes_studio_math_multistep_equation_variable_label" : "方程变量 ",
+		"quizzes_studio_math_multistep_equation_variable_placeholder" : "变量名称",
+		"quizzes_studio_math_multistep_equation_variable_description" : "为要求解的方程式指定单个变量。",
+		"quizzes_studio_multistep_incorrect_feedback_label" : "不正确",
+		"quizzes_studio_multistep_partially_correct_feedback_label" : "即将完成",
+		"quizzes_studio_multistep_correct_feedback_label": "正确",
+		"quizzes_studio_test_question_multistep_feedback_empty": "提交您的运算步骤即可查看学生自动指导",
+		"quizzes_studio_test_question_multistep_feedback_on_track": "您在正确的道路上。 继续前进！",
+		"quizzes_studio_test_question_multistep_feedback_finished": "您对此问题的回答正确。",
+		"quizzes_studio_test_question_task_prompt_label_equation": "为该方程式求解",
+		"quizzes_studio_test_question_task_prompt_label_basic_operations": "执行运算",
+		"quizzes_studio_test_question_student_answer_test_button_label": "测试",
+		"quizzes_studio_test_question_student_answer_clear_button_label": "清除",
+
+    "quizzes_studio_math_input_options_input_syntax_multiplication_symbols_title": "允许使用的乘法符号",
+		"quizzes_studio_math_input_options_input_syntax_multiplication_symbols_implicit_product_label": "隐式乘法运算",
+		"quizzes_studio_math_input_options_input_syntax_multiplication_symbols_implicit_product_helper_text": "该运算通常用连续书写的元素表示乘法运算。 示例： 2y 表示 2 乘以 y。",
+		"quizzes_studio_math_input_options_input_syntax_multiplication_symbols_dot_product_label": "点乘运算",
+		"quizzes_studio_math_input_options_input_syntax_multiplication_symbols_dot_product_helper_text": "用带有点或星号运算符号的元素表示乘法运算。 示例： 2 · y 表示 2 乘以 y。",
+		"quizzes_studio_math_input_options_input_syntax_multiplication_symbols_cross_product_label": "交叉乘法运算",
+		"quizzes_studio_math_input_options_input_syntax_multiplication_symbols_cross_product_helper_text": "用带有交叉运算符号的元素表示乘法运算。 示例： 2 × y 表示 2 乘以 y。",
+    
+		"quizzes_studio_math_multistep_task_to_solve_math_type_error": "要解决的任务缺失",
+		"quizzes_studio_math_multistep_equation_variable_error": "变量名称缺失",
+
+		"quizzes_studio_multistep_error_session_start_title": "错误",
+		"quizzes_studio_multistep_error_session_start_message": "任务加载时出错。 请重试或返回，以确保任务定义正确。",
+		"quizzes_studio_multistep_error_session_start_try_again": "请重试",
+		"quizzes_studio_multistep_error_session_start_go_back": "返回",
+		"quizzes_studio_multistep_error_session_start_contact_us": "联系我们",
+
+		"syntax_math_multistep": "带学生自动指导功能的数学"
 	}
 }
 
